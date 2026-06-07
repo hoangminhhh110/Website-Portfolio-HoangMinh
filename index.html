@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Kỹ thuật số - Mai Hoàng Minh</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap");
+
+    :root {
+      --blue-dark: #4a0e8f;
+      --blue: #b06cf4;
+      --blue-light: #f3eefe;
+      --blue-soft: #e8d8fc;
+      --background: #f8f4ff;
+      --text: #1a1025;
+      --muted: #4a3f60;
+      --white: #ffffff;
+      --border: #ddd0f5;
+      --shadow: 0 10px 30px rgba(100, 30, 200, 0.18);
+      --radius: 18px;
+      --font-main: "Be Vietnam Pro", "Segoe UI", Tahoma, Arial, sans-serif;
+      --font-heading: "Be Vietnam Pro", "Segoe UI", Tahoma, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: #f8f4ff;
+      color: var(--text);
+      line-height: 1.75;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .logo, .btn, .tag, .skill, .project-link, .back-btn {
+      font-family: var(--font-heading);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 800;
+      letter-spacing: -0.035em;
+    }
+
+    p, li {
+      font-size: 16px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(13, 5, 25, 0.90), rgba(80, 20, 160, 0.85)),
+        url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      width: 100%;
+      padding: 24px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,10,22,0.95);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #c89ef8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      opacity: 0.95;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: #c89ef8;
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      font-weight: 400;
+      max-width: 680px;
+      margin-bottom: 34px;
+      opacity: 0.95;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.3s;
+      display: inline-block;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      font-family: var(--font-main);
+    }
+
+    .btn-primary {
+      background: #b06cf4;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(176,108,244,0.35);
+      background: #c589f8;
+    }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.7);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: rgba(176,108,244,0.25);
+      border-color: #b06cf4;
+      color: #e8e0f5;
+    }
+
+    section {
+      padding: 90px 8%;
+    }
+
+    .section-title {
+      margin-bottom: 42px;
+      max-width: 850px;
+    }
+
+    .section-title span {
+      color: #b06cf4;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      color: var(--blue-dark);
+      margin: 10px 0 14px;
+      line-height: 1.2;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .profile-card {
+      background: var(--white);
+      padding: 34px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: 6px solid var(--background);
+  background: #f3eefe;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+    .profile-card p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .info-list {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .info-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .goal-card {
+      background: linear-gradient(135deg, #4a0e8f, #b06cf4);
+      color: var(--white);
+      padding: 38px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .goal-card h3 {
+      font-size: 30px;
+      margin-bottom: 18px;
+    }
+
+    .goal-card p {
+      margin-bottom: 18px;
+      opacity: 0.95;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .skill {
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .projects {
+      background: var(--white);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: #f8f4ff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 20px rgba(0, 64, 128, 0.06);
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-top {
+      height: 120px;
+      background: linear-gradient(135deg, #7c3aed, #4a0e8f);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      font-weight: 800;
+    }
+
+    .project-body {
+      padding: 24px;
+    }
+
+    .project-body h3 {
+      color: var(--blue-dark);
+      font-size: 21px;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .project-body ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+      color: var(--muted);
+    }
+
+    .project-link {
+      display: inline-block;
+      color: #b06cf4;
+      font-weight: 800;
+      border-bottom: 2px solid #b06cf4;
+      background: transparent;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 24px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 76px;
+      margin-bottom: 42px;
+    }
+
+    .timeline-number {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: #7c3aed;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-content {
+      background: var(--white);
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-content h3 {
+      color: var(--blue-dark);
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .summary {
+      background: #f3eefe;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .summary-card {
+      background: var(--white);
+      padding: 28px;
+      border-radius: var(--radius);
+      border-left: 7px solid #b06cf4;
+      box-shadow: var(--shadow);
+      line-height: 1.75;
+    }
+
+    .summary-card h3 {
+      color: var(--blue-dark);
+      margin-bottom: 14px;
+      font-size: 24px;
+    }
+
+    .summary-card p {
+      margin-bottom: 12px;
+      color: var(--text);
+      text-align: justify;
+    }
+
+    .summary-wide {
+      grid-column: 1 / -1;
+    }
+
+    .summary-final {
+      background: var(--white);
+      margin-top: 28px;
+      padding: 34px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      line-height: 1.8;
+    }
+
+    .summary-final h2 {
+      color: var(--blue-dark);
+      margin-bottom: 18px;
+      font-size: 28px;
+    }
+
+    .summary-final p {
+      margin-bottom: 14px;
+      color: var(--text);
+      text-align: justify;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #4a0e8f, #b06cf4);
+      color: var(--white);
+      padding: 48px;
+      border-radius: var(--radius);
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 30px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h2 {
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+
+    .contact-info {
+      list-style: none;
+    }
+
+    .contact-info li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    footer {
+      background: #080512;
+      color: var(--white);
+      text-align: center;
+      padding: 28px 8%;
+    }
+
+    footer p {
+      opacity: 0.85;
+    }
+
+    /* ===== PHẦN CHI TIẾT BÀI TẬP ===== */
+    .detail-page {
+      display: none;
+      padding: 90px 8%;
+      background: #f8f4ff;
+      min-height: 100vh;
+    }
+
+    .detail-page.active {
+      display: block;
+    }
+
+    .detail-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 28px;
+      background: #7c3aed;
+      color: var(--white);
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .back-btn:hover {
+      background: #4a0e8f;
+    }
+
+    .detail-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 34px;
+      margin-bottom: 28px;
+    }
+
+    .detail-card h1 {
+      color: var(--blue-dark);
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .detail-card h2 {
+      color: var(--blue-dark);
+      margin: 24px 0 12px;
+      font-size: 28px;
+    }
+
+    .detail-card h3 {
+      color: #b06cf4;
+      margin: 20px 0 10px;
+      font-size: 22px;
+    }
+
+    .detail-card p {
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .detail-card ul,
+    .detail-card ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    .detail-card li {
+      margin-bottom: 10px;
+    }
+
+    .highlight-box {
+      background: #f3eefe;
+      border-left: 6px solid #b06cf4;
+      padding: 18px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .step-box {
+      background: #f8f4ff;
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 14px;
+    }
+
+    .step-box strong {
+      color: var(--blue-dark);
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 720px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-top: 18px;
+      background: var(--white);
+    }
+
+    .rubric-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      background: var(--white);
+      font-size: 15px;
+    }
+
+    .rubric-table th,
+    .rubric-table td {
+      border: 1px solid #999;
+      padding: 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .rubric-table th {
+      background: #f3eefe;
+      color: var(--blue-dark);
+    }
+
+    .main-content.hidden {
+      display: none;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    @media (max-width: 1000px) {
+      .project-grid,
+      .step-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-wide {
+        grid-column: auto;
+      }
+
+      .intro-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        font-size: 14px;
+      }
+
+      .hero {
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+
+      .project-grid,
+      .summary-grid,
+      .step-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section,
+      .detail-page {
+        padding: 70px 6%;
+      }
+
+      .timeline::before {
+        left: 18px;
+      }
+
+      .timeline-item {
+        padding-left: 62px;
+      }
+
+      .timeline-number {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+      }
+
+      .detail-card {
+        padding: 24px;
+      }
+
+      .pdf-frame {
+        height: 520px;
+      }
+
+      .rubric-table {
+        font-size: 13px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- TOÀN BỘ GIAO DIỆN CHÍNH -->
+
+  <div id="mainContent" class="main-content">
+
+<!-- HEADER -->
+<header id="home">
+  <nav>
+    <div class="logo">My<span>Portfolio</span></div>
+
+    <ul class="nav-links">
+      <li><a href="#about">Giới thiệu</a></li>
+      <li><a href="#projects">Dự án</a></li>
+      <li><a href="#process">Quy trình</a></li>
+      <li><a href="#summary">Tổng kết</a></li>
+      <li><a href="#contact">Liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-content">
+      <span class="tag">Portfolio Kỹ thuật số</span>
+      <h1>Xin chào, tôi là Mai Hoàng Minh</h1>
+      <p>
+        Đây là Portfolio cá nhân tổng hợp các sản phẩm học tập, kỹ năng số,
+        khả năng sử dụng công cụ trực tuyến và ứng dụng trí tuệ nhân tạo một cách có trách nhiệm.
+      </p>
+
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary">Xem dự án</a>
+        <a href="#about" class="btn btn-outline">Tìm hiểu thêm</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- GIỚI THIỆU -->
+<section id="about">
+  <div class="section-title">
+    <span>Giới thiệu</span>
+    <h2>Thông tin cá nhân và mục tiêu học tập</h2>
+    <p>
+      Portfolio này thể hiện quá trình học tập, rèn luyện kỹ năng số và khả năng trình bày sản phẩm học tập.
+    </p>
+  </div>
+
+  <div class="intro-grid">
+    <div class="profile-card">
+      <div class="avatar">
+        <img src="data:image/png;base64,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" alt="Ảnh đại diện của Mai Hoàng Minh">
+      </div>
+
+      <h3>Mai Hoàng Minh</h3>
+      <p>Học sinh/Sinh viên đang xây dựng Portfolio kỹ thuật số.</p>
+
+      <ul class="info-list">
+        <li><strong>Họ tên:</strong> Mai Hoàng Minh</li>
+        <li><strong>Lớp:</strong> VNU1001_E252012</li>
+        <li><strong>Môn học:</strong> Nhập môn công nghệ số và trí tuệ nhân tạo</li>
+        <li><strong>Chủ đề:</strong> Portfolio cá nhân</li>
+      </ul>
+    </div>
+
+    <div class="goal-card">
+      <h3>Mục tiêu Portfolio</h3>
+      <p>
+        Mục tiêu của Portfolio là tổng hợp các bài tập đã hoàn thành, trình bày rõ ràng
+        quá trình thực hiện, sản phẩm cuối cùng và những kỹ năng đã học được.
+      </p>
+      <p>
+        Thông qua Portfolio này, tôi có thể tự đánh giá quá trình học tập, cải thiện khả năng sử dụng
+        công cụ số và phát triển tư duy trình bày sản phẩm cá nhân.
+      </p>
+
+      <div class="skills">
+        <span class="skill">Quản lý tệp</span>
+        <span class="skill">Tìm kiếm thông tin</span>
+        <span class="skill">AI</span>
+        <span class="skill">Hợp tác trực tuyến</span>
+        <span class="skill">Nội dung số</span>
+        <span class="skill">An toàn số</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DỰ ÁN -->
+<section id="projects" class="projects">
+  <div class="section-title">
+    <span>Trang dự án</span>
+    <h2>Các bài tập thành phần</h2>
+    <p>
+      Tập hợp và trình bày các bài tập đã hoàn thành. Mỗi bài tập gồm mục tiêu,
+      tóm tắt quá trình thực hiện và sản phẩm cuối cùng như file PDF, hình ảnh hoặc đường liên kết minh họa.
+    </p>
+  </div>
+
+  <div class="project-grid">
+
+    <div class="project-card">
+      <div class="project-top">01</div>
+      <div class="project-body">
+        <h3>Bài tập 1 - Bài 1: Máy tính và các thiết bị ngoại vi</h3>
+        <p>
+          Trình bày kỹ năng thao tác với tệp tin và thư mục trên hệ điều hành Windows.
+        </p>
+        <ul>
+          <li>Mục tiêu: Tạo, đổi tên, sao chép, di chuyển và xóa tệp/thư mục</li>
+          <li>Quá trình: Thực hành theo từng bước trên File Explorer</li>
+          <li>Sản phẩm: File PDF minh chứng quá trình thực hiện</li>
+        </ul>
+        <button class="project-link" onclick="showDetail('bai1')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">02</div>
+      <div class="project-body">
+        <h3>Bài tập 2 - Bài 2: Khai thác dữ liệu và thông tin</h3>
+        <p>
+          Thể hiện khả năng tìm kiếm, khai thác, chọn lọc và đánh giá thông tin từ nhiều nguồn khác nhau.
+        </p>
+        <ul>
+          <li>Mục tiêu: Biết cách khai thác dữ liệu hiệu quả</li>
+          <li>Quá trình: Tìm kiếm, so sánh và đánh giá nguồn</li>
+          <li>Sản phẩm: Bảng đánh giá nguồn hoặc file kết quả</li>
+        </ul>
+        <button class="project-link" onclick="showDetail('bai2')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">03</div>
+      <div class="project-body">
+        <h3>Bài tập 2 - Bài 3: Tổng quan về trí tuệ nhân tạo</h3>
+        <p>
+          Trình bày hiểu biết cơ bản về trí tuệ nhân tạo, ứng dụng của AI trong đời sống và học tập.
+        </p>
+        <ul>
+          <li>Mục tiêu: Hiểu khái niệm và vai trò của AI</li>
+          <li>Quá trình: Tìm hiểu, tổng hợp và trình bày</li>
+          <li>Sản phẩm: Bài viết, slide, hình ảnh hoặc PDF</li>
+        </ul>
+        <button class="project-link" onclick="showDetail('bai3')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">04</div>
+      <div class="project-body">
+        <h3>Bài tập 3 - Bài 4: Giao tiếp và hợp tác trong môi trường số</h3>
+        <p>
+          Minh chứng việc sử dụng công cụ trực tuyến để giao tiếp, phân công nhiệm vụ và phối hợp nhóm.
+        </p>
+        <ul>
+          <li>Mục tiêu: Rèn luyện kỹ năng hợp tác trực tuyến</li>
+          <li>Quá trình: Sử dụng công cụ quản lý nhóm</li>
+          <li>Sản phẩm: Ảnh chụp màn hình hoặc link nhóm</li>
+        </ul>
+        <button class="project-link" onclick="showDetail('bai4')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">05</div>
+      <div class="project-body">
+        <h3>Bài tập 2 - Bài 5: Sáng tạo nội dung số</h3>
+        <p>
+          Trưng bày sản phẩm nội dung số được tạo ra trong quá trình học tập.
+        </p>
+        <ul>
+          <li>Mục tiêu: Biết cách tạo sản phẩm nội dung số</li>
+          <li>Quá trình: Lên ý tưởng, thiết kế và hoàn thiện</li>
+          <li>Sản phẩm: Hình ảnh, video, bài viết hoặc poster</li>
+        </ul>
+        <button class="project-link" onclick="showDetail('bai5')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">06</div>
+      <div class="project-body">
+        <h3>Bài tập 4 - Bài 6: An toàn và liêm chính học thuật trong môi trường số</h3>
+        <p>
+          Trình bày nhận thức về an toàn thông tin, bảo vệ dữ liệu cá nhân và liêm chính học thuật.
+        </p>
+        <ul>
+          <li>Mục tiêu: Hiểu nguyên tắc an toàn và liêm chính học thuật</li>
+          <li>Quá trình: Phân tích tình huống và rút ra nguyên tắc</li>
+          <li>Sản phẩm: Bộ nguyên tắc hoặc báo cáo</li>
+        </ul>
+        <button class="project-link" onclick="showDetail('bai6')">Xem chi tiết</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- QUY TRÌNH -->
+<section id="process">
+  <div class="section-title">
+    <span>Quy trình thực hiện</span>
+    <h2>Các bước xây dựng Portfolio</h2>
+    <p>
+      Portfolio được hoàn thiện theo từng bước từ thiết lập nền tảng,
+      hệ thống hóa bài tập đến tổng kết và đánh giá bản thân.
+    </p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-number">1</div>
+      <div class="timeline-content">
+        <h3>Thiết lập nền tảng Portfolio</h3>
+        <p>
+          Lựa chọn công cụ xây dựng website hoặc blog cá nhân như Google Sites,
+          Notion, Wix, WordPress hoặc HTML/CSS.
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-number">2</div>
+      <div class="timeline-content">
+        <h3>Trình bày các bài tập thành phần</h3>
+        <p>
+          Sắp xếp 6 bài tập theo từng mục rõ ràng. Mỗi bài tập có mô tả,
+          mục tiêu, quá trình thực hiện, ảnh minh họa và sản phẩm cuối cùng.
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-number">3</div>
+      <div class="timeline-content">
+        <h3>Hoàn thiện và tổng kết</h3>
+        <p>
+          Kiểm tra bố cục, liên kết, nội dung và tính thẩm mỹ.
+          Viết phần tổng kết để chia sẻ trải nghiệm và kiến thức học được.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TỔNG KẾT -->
+<section id="summary" class="summary">
+  <div class="section-title">
+    <span>Trang tổng kết</span>
+    <h2>Nhìn lại quá trình xây dựng Portfolio</h2>
+    <p>
+      Phần tổng kết này trình bày những trải nghiệm cá nhân, kiến thức và kỹ năng đã học được,
+      đồng thời thể hiện sự trưởng thành của bản thân trong quá trình thực hiện dự án Portfolio kỹ thuật số.
+    </p>
+  </div>
+
+  <div class="summary-grid">
+    <div class="summary-card">
+      <h3>Trải nghiệm và cảm nhận cá nhân</h3>
+      <p>
+        Trong quá trình thực hiện dự án Portfolio, em có cơ hội nhìn lại toàn bộ quá trình học tập
+        và hệ thống hóa các sản phẩm đã hoàn thành theo một cách rõ ràng, khoa học hơn.
+        Ban đầu, em chỉ xem Portfolio là nơi lưu trữ bài tập, nhưng sau khi thực hiện,
+        em nhận ra đây còn là công cụ giúp bản thân tự đánh giá năng lực, nhận biết điểm mạnh,
+        điểm yếu và quá trình tiến bộ của mình qua từng bài học.
+      </p>
+      <p>
+        Em cảm thấy dự án này giúp mình chủ động hơn trong học tập. Thay vì chỉ hoàn thành bài tập
+        riêng lẻ, em phải suy nghĩ cách trình bày sao cho người xem hiểu được mục tiêu,
+        quá trình thực hiện và kết quả cuối cùng của từng bài. Nhờ đó, em rèn luyện được
+        tư duy tổ chức thông tin, khả năng diễn đạt nội dung và tinh thần trách nhiệm
+        đối với sản phẩm cá nhân.
+      </p>
+    </div>
+
+    <div class="summary-card">
+      <h3>Kiến thức và kỹ năng quan trọng đã học được</h3>
+      <p>
+        Qua dự án Portfolio, em đã học được nhiều kỹ năng số quan trọng. Trước hết là kỹ năng
+        quản lý tệp và thư mục, giúp em biết cách sắp xếp tài liệu học tập khoa học,
+        đặt tên tệp rõ ràng và lưu trữ dữ liệu hợp lý. Đây là kỹ năng nền tảng nhưng rất cần thiết
+        trong học tập và công việc sau này.
+      </p>
+      <p>
+        Bên cạnh đó, em rèn luyện được kỹ năng tìm kiếm, chọn lọc và đánh giá thông tin
+        từ nhiều nguồn khác nhau. Em hiểu rằng không phải thông tin nào trên Internet cũng đáng tin cậy,
+        vì vậy cần xem xét tác giả, nguồn xuất bản, tính cập nhật và mục đích sử dụng
+        của tài liệu trước khi đưa vào bài làm.
+      </p>
+      <p>
+        Một kỹ năng quan trọng khác là sử dụng trí tuệ nhân tạo một cách có trách nhiệm.
+        Em học được cách viết prompt rõ ràng, biết dùng AI để hỗ trợ tóm tắt, gợi ý ý tưởng
+        và cải thiện nội dung, nhưng không phụ thuộc hoàn toàn vào AI. Em hiểu rằng người học
+        vẫn cần kiểm tra, chọn lọc và chỉnh sửa kết quả để đảm bảo tính chính xác.
+      </p>
+    </div>
+
+    <div class="summary-card summary-wide">
+      <h3>Điểm tâm đắc và thách thức khi xây dựng Portfolio</h3>
+      <p>
+        Điều em cảm thấy tâm đắc nhất là Portfolio không chỉ trình bày kết quả cuối cùng
+        mà còn thể hiện được quá trình học tập và sự tiến bộ của bản thân. Mỗi bài tập trong Portfolio
+        đều có mục tiêu, quá trình thực hiện và sản phẩm minh chứng, giúp người xem hiểu rõ
+        em đã học được gì và đã áp dụng kiến thức như thế nào.
+      </p>
+      <p>
+        Tuy nhiên, trong quá trình xây dựng Portfolio, em cũng gặp một số thách thức.
+        Khó khăn đầu tiên là việc lựa chọn nội dung phù hợp để trình bày sao cho ngắn gọn
+        nhưng vẫn đầy đủ ý. Nếu viết quá ít, bài làm sẽ thiếu chiều sâu; nếu viết quá dài,
+        người xem có thể khó theo dõi. Vì vậy, em phải học cách sắp xếp nội dung theo từng phần rõ ràng
+        và ưu tiên những ý quan trọng nhất.
+      </p>
+      <p>
+        Thách thức thứ hai là đảm bảo tính thẩm mỹ và sự thống nhất của Portfolio.
+        Các bài tập cần được trình bày cùng một phong cách, có bố cục rõ ràng,
+        màu sắc phù hợp và dễ đọc. Qua quá trình chỉnh sửa, em nhận ra rằng một sản phẩm số tốt
+        không chỉ cần nội dung đúng mà còn cần cách trình bày hợp lý để tạo trải nghiệm tốt cho người xem.
+      </p>
+    </div>
+  </div>
+
+  <div class="summary-final">
+    <h2>Sự trưởng thành và định hướng áp dụng trong tương lai</h2>
+    <p>
+      Sau khi hoàn thành Portfolio, em nhận thấy bản thân đã trưởng thành hơn trong cách học tập
+      và làm việc với công nghệ. Em biết lập kế hoạch trước khi thực hiện, biết chia nhỏ công việc
+      thành từng bước, biết kiểm tra lại sản phẩm và biết trình bày kết quả một cách có hệ thống.
+      Đây là sự thay đổi quan trọng vì trước đây em thường chỉ tập trung hoàn thành từng bài riêng lẻ
+      mà chưa chú ý nhiều đến việc tổng hợp, đánh giá và cải thiện sản phẩm.
+    </p>
+    <p>
+      Trong tương lai, em sẽ tiếp tục áp dụng các kỹ năng đã học vào học tập và công việc.
+      Kỹ năng quản lý tệp sẽ giúp em lưu trữ tài liệu cá nhân khoa học hơn. Kỹ năng tìm kiếm
+      và đánh giá thông tin sẽ giúp em thực hiện các bài nghiên cứu chính xác hơn.
+      Kỹ năng sử dụng AI sẽ hỗ trợ em học tập hiệu quả, nhưng em sẽ luôn kiểm tra lại thông tin
+      và sử dụng AI một cách trung thực, có trách nhiệm.
+    </p>
+    <p>
+      Ngoài ra, kỹ năng hợp tác trực tuyến sẽ rất hữu ích khi em tham gia các dự án nhóm
+      trong học tập hoặc công việc sau này. Em có thể sử dụng các công cụ số để phân công nhiệm vụ,
+      theo dõi tiến độ, chia sẻ tài liệu và giao tiếp hiệu quả hơn. Những kinh nghiệm từ dự án Portfolio
+      sẽ là nền tảng để em tiếp tục phát triển tư duy số, khả năng tự học và năng lực thích nghi
+      với môi trường học tập, làm việc hiện đại.
+    </p>
+  </div>
+</section>
+
+<!-- LIÊN HỆ -->
+<section id="contact">
+  <div class="contact-box">
+    <div>
+      <h2>Liên hệ</h2>
+      <p>
+        Cảm ơn bạn đã xem Portfolio của tôi. Đây là nơi lưu trữ các sản phẩm học tập
+        và thể hiện quá trình phát triển kỹ năng số của bản thân.
+      </p>
+    </div>
+
+    <ul class="contact-info">
+      <li><strong>Họ tên:</strong> Mai Hoàng Minh</li>
+      <li><strong>Email:</strong> maihoangminh011007@gmail.com</li>
+      <li><strong>Lớp:</strong> VNU1001_E252012</li>
+      <li><strong>Portfolio:</strong> maihoangminh011007@gmail.com</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 - Portfolio Kỹ thuật số | Thiết kế bởi Mai Hoàng Minh</p>
+</footer>
+
+  </div>
+
+  <!-- CHI TIẾT BÀI 1 -->
+
+  <section id="bai1" class="detail-page">
+    <div class="detail-container">
+      <button class="back-btn" onclick="backToMain()">← Quay lại trang chính</button>
+
+  <div class="detail-card">
+    <h1>Bài 1: Máy tính và các thiết bị ngoại vi</h1>
+
+    <div class="highlight-box">
+      <h2>Mục tiêu</h2>
+      <p>
+        Ở Bài 1, em tập trung rèn luyện kỹ năng thao tác với tệp tin và thư mục trên hệ điều hành Windows.
+        Mục tiêu chính của bài là biết cách tạo, đổi tên, sao chép, di chuyển, xóa và khôi phục dữ liệu
+        một cách chính xác, an toàn và khoa học.
+      </p>
+      <p>
+        Thông qua bài tập này, em hiểu rõ hơn vai trò của việc quản lý dữ liệu cá nhân, biết sắp xếp tài liệu học tập
+        theo thư mục rõ ràng và hạn chế tình trạng thất lạc hoặc xóa nhầm tệp quan trọng.
+      </p>
+    </div>
+
+    <h2>Quá trình thực hiện</h2>
+    <div class="step-grid">
+      <div class="step-box">
+        <strong>Bước 1: Mở File Explorer và chọn vị trí thực hành</strong>
+        <p>
+          Đầu tiên, em mở File Explorer bằng tổ hợp phím Windows + E hoặc nhấp vào biểu tượng thư mục trên thanh tác vụ.
+          Sau đó, em chọn vị trí lưu trữ phù hợp như ổ D:, ổ E: hoặc thư mục Documents nếu máy chỉ có ổ C:.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 2: Tạo thư mục thực hành</strong>
+        <p>
+          Em nhấp chuột phải vào khoảng trống, chọn New → Folder để tạo thư mục mới.
+          Thư mục được đặt tên theo mẫu ThucHanh_hotensinhvien, ví dụ ThucHanh_MaiHoangMinh,
+          nhằm giúp dễ nhận biết và quản lý bài thực hành.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 3: Tạo và đổi tên tệp văn bản</strong>
+        <p>
+          Trong thư mục vừa tạo, em tạo một tệp văn bản mới bằng lệnh New → Text Document và đặt tên là GhiChu.txt.
+          Sau đó, em sử dụng lệnh Rename để đổi tên tệp thành GhiChuQuanTrong.txt,
+          qua đó luyện tập thao tác đặt tên tệp rõ ràng và phù hợp với nội dung.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 4: Tạo thư mục con để phân loại tài liệu</strong>
+        <p>
+          Em tạo thêm thư mục con có tên TaiLieu bên trong thư mục thực hành.
+          Việc tạo thư mục con giúp phân loại dữ liệu theo nhóm, tránh để nhiều tệp nằm lộn xộn trong cùng một vị trí.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 5: Sao chép tệp vào thư mục con</strong>
+        <p>
+          Em chọn tệp GhiChuQuanTrong.txt, sử dụng lệnh Copy hoặc tổ hợp phím Ctrl + C,
+          sau đó mở thư mục TaiLieu và dùng Paste hoặc Ctrl + V để dán tệp vào.
+          Thao tác này giúp em hiểu sự khác nhau giữa sao chép và di chuyển tệp.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 6: Di chuyển tệp sang vị trí khác</strong>
+        <p>
+          Em tạo một tệp mới tên DiChuyen.txt, sau đó sử dụng lệnh Cut hoặc Ctrl + X để di chuyển tệp
+          vào thư mục TaiLieu. Sau khi dán tệp, em kiểm tra lại vị trí cũ và vị trí mới để đảm bảo tệp đã được chuyển đúng.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 7: Xóa tệp và kiểm tra Recycle Bin</strong>
+        <p>
+          Em thực hành xóa tệp bằng phím Delete để đưa tệp vào Recycle Bin.
+          Sau đó, em mở Recycle Bin để kiểm tra tệp đã xóa và thực hành khôi phục tệp khi cần thiết.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 8: Xóa vĩnh viễn và rút kinh nghiệm</strong>
+        <p>
+          Cuối cùng, em thực hành thao tác Shift + Delete để hiểu khái niệm xóa vĩnh viễn.
+          Từ đó, em rút ra bài học rằng cần kiểm tra kỹ nội dung trước khi xóa, đặc biệt với các tệp quan trọng.
+        </p>
+      </div>
+    </div>
+
+    <h2>Sản phẩm cuối cùng</h2>
+    <p>
+      Sản phẩm cuối cùng của Bài 1 là file PDF ghi lại quá trình thực hành quản lý tệp và thư mục trên Windows.
+      Bài làm có minh chứng các thao tác như tạo thư mục, tạo tệp, đổi tên, sao chép, di chuyển, xóa và khôi phục dữ liệu.
+      Qua bài tập này, em đã nắm được cách tổ chức tài liệu học tập một cách khoa học và an toàn hơn.
+    </p>
+    <a href="https://drive.google.com/file/d/19QrQ83cRzNV4iXPzxaSplh8GLfOtUWeu/view?usp=sharing" class="link-noi">https://drive.google.com/file/d/19QrQ83cRzNV4iXPzxaSplh8GLfOtUWeu/view?usp=sharing</a>
+
+<style>
+.link-noi {
+  color: white;
+  background-color: #7c3aed;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.link-noi:hover {
+  background-color: #4a0e8f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+</style>
+    <iframe class="pdf-frame" src="Bài 1.pdf"></iframe>
+  </div>
+</div>
+
+  </section>
+
+  <!-- CHI TIẾT BÀI 2 -->
+
+  <section id="bai2" class="detail-page">
+    <div class="detail-container">
+      <button class="back-btn" onclick="backToMain()">← Quay lại trang chính</button>
+
+  <div class="detail-card">
+    <h1>Bài 2: Khai thác dữ liệu và thông tin</h1>
+
+    <div class="highlight-box">
+      <h2>Mục tiêu</h2>
+      <p>
+        Ở Bài 2, em tập trung rèn luyện kỹ năng tìm kiếm, lựa chọn và đánh giá nguồn thông tin học thuật
+        đáng tin cậy về chủ đề ứng dụng AI trong hỗ trợ ra quyết định của hệ thống thông tin doanh nghiệp.
+      </p>
+      <p>
+        Mục tiêu của bài là biết cách xác định từ khóa, khai thác dữ liệu từ các nguồn uy tín,
+        so sánh chất lượng tài liệu và lựa chọn những nguồn có giá trị nhất để phục vụ nghiên cứu.
+      </p>
+    </div>
+
+    <h2>Quá trình thực hiện</h2>
+    <div class="step-grid">
+      <div class="step-box">
+        <strong>Bước 1: Xác định chủ đề và phạm vi nghiên cứu</strong>
+        <p>
+          Đầu tiên, em xác định chủ đề chính của bài là ứng dụng trí tuệ nhân tạo trong việc hỗ trợ ra quyết định
+          của hệ thống thông tin doanh nghiệp. Sau đó, em giới hạn phạm vi tìm kiếm vào các tài liệu học thuật,
+          bài báo nghiên cứu và báo cáo từ tổ chức uy tín.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 2: Xây dựng bộ từ khóa tìm kiếm</strong>
+        <p>
+          Em lựa chọn các từ khóa liên quan như artificial intelligence, decision support system,
+          business information system, AI decision-making và enterprise information system.
+          Việc sử dụng cả tiếng Anh và tiếng Việt giúp mở rộng phạm vi tìm kiếm và tiếp cận nhiều nguồn tài liệu hơn.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 3: Tìm kiếm tài liệu trên các nền tảng phù hợp</strong>
+        <p>
+          Em tiến hành tìm kiếm tài liệu trên các công cụ học thuật và nguồn thông tin đáng tin cậy.
+          Trong quá trình tìm kiếm, em ưu tiên các tài liệu có tên tác giả rõ ràng, đơn vị xuất bản uy tín,
+          nội dung liên quan trực tiếp đến chủ đề và thời gian công bố còn phù hợp.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 4: Sàng lọc và loại bỏ nguồn chưa phù hợp</strong>
+        <p>
+          Sau khi thu thập được nhiều tài liệu, em đọc tiêu đề, phần tóm tắt và nội dung chính để loại bỏ
+          các nguồn không liên quan hoặc thiếu độ tin cậy. Những tài liệu mang tính quảng cáo, không có tác giả rõ ràng
+          hoặc không nêu phương pháp nghiên cứu được đánh giá là chưa phù hợp.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 5: Đánh giá chất lượng từng nguồn</strong>
+        <p>
+          Em đánh giá từng nguồn theo các tiêu chí gồm tác giả, cơ quan xuất bản, phương pháp nghiên cứu,
+          mức độ trích dẫn, tính cập nhật và mức độ liên quan đến chủ đề.
+          Việc đánh giá này giúp em nhận biết nguồn nào có giá trị học thuật cao hơn.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 6: Lập bảng tổng hợp thông tin</strong>
+        <p>
+          Em hệ thống hóa các nguồn đã chọn vào bảng tổng hợp, trong đó ghi rõ tên tài liệu,
+          nguồn xuất bản, nội dung chính, điểm mạnh, hạn chế và lý do lựa chọn.
+          Bảng này giúp quá trình so sánh tài liệu trở nên rõ ràng và dễ theo dõi hơn.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 7: Rút ra nguồn tài liệu có giá trị nhất</strong>
+        <p>
+          Dựa trên kết quả đánh giá, em chọn ra các tài liệu có độ tin cậy cao nhất để phục vụ cho việc nghiên cứu.
+          Những nguồn này có nội dung bám sát chủ đề, phương pháp trình bày rõ ràng và có khả năng hỗ trợ lập luận tốt.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 8: Hoàn thiện báo cáo và minh chứng</strong>
+        <p>
+          Cuối cùng, em hoàn thiện bài báo cáo bằng cách trình bày mục tiêu, quá trình tìm kiếm,
+          bảng đánh giá nguồn và kết luận. Bài làm được xuất thành file PDF để lưu trữ và nộp sản phẩm cuối cùng.
+        </p>
+      </div>
+    </div>
+
+    <h2>Sản phẩm cuối cùng</h2>
+    <p>
+      Sản phẩm cuối cùng của Bài 2 là file PDF trình bày quá trình khai thác, chọn lọc và đánh giá nguồn thông tin.
+      Bài làm thể hiện rõ cách em xác định chủ đề, tìm kiếm tài liệu, đánh giá độ tin cậy và lựa chọn nguồn phù hợp
+      cho nghiên cứu về ứng dụng AI trong hệ thống thông tin doanh nghiệp.
+    </p>
+    <a href="https://drive.google.com/file/d/1pkdQZLSW0JWPOtssQkP5EdcdLAs4-lQF/view?usp=sharing" class="link-noi">https://drive.google.com/file/d/1pkdQZLSW0JWPOtssQkP5EdcdLAs4-lQF/view?usp=sharing</a>
+
+<style>
+.link-noi {
+  color: white;
+  background-color: #7c3aed;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.link-noi:hover {
+  background-color: #4a0e8f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+</style>
+    <iframe class="pdf-frame" src="Bài 2.pdf"></iframe>
+  </div>
+</div>
+
+  </section>
+
+  <!-- CHI TIẾT BÀI 3 -->
+
+  <section id="bai3" class="detail-page">
+    <div class="detail-container">
+      <button class="back-btn" onclick="backToMain()">← Quay lại trang chính</button>
+
+  <div class="detail-card">
+    <h1>Bài 3: Tổng quan về trí tuệ nhân tạo</h1>
+
+    <div class="highlight-box">
+      <h2>Mục tiêu</h2>
+      <p>
+        Ở Bài 3, em tập trung tìm hiểu cách sử dụng trí tuệ nhân tạo để hỗ trợ đọc hiểu và tóm tắt tài liệu học thuật.
+        Mục tiêu chính của bài là biết cách viết prompt hiệu quả để AI xác định vấn đề nghiên cứu,
+        cơ chế cốt lõi và ý nghĩa thực tiễn của tài liệu.
+      </p>
+      <p>
+        Thông qua bài tập này, em rèn luyện khả năng khai thác AI trong học tập một cách có định hướng,
+        biết cải tiến yêu cầu từng bước và kiểm tra lại nội dung để tránh phụ thuộc hoàn toàn vào công cụ.
+      </p>
+    </div>
+
+    <h2>Quá trình thực hiện</h2>
+    <div class="step-grid">
+      <div class="step-box">
+        <strong>Bước 1: Lựa chọn tài liệu học thuật cần tóm tắt</strong>
+        <p>
+          Đầu tiên, em lựa chọn bài báo “Attention Is All You Need” làm tài liệu thực hành.
+          Đây là tài liệu quan trọng trong lĩnh vực trí tuệ nhân tạo, đặc biệt liên quan đến mô hình Transformer
+          và các ứng dụng xử lý ngôn ngữ tự nhiên.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 2: Viết prompt cơ bản</strong>
+        <p>
+          Em bắt đầu bằng một prompt đơn giản yêu cầu AI tóm tắt nội dung chính của bài báo.
+          Ở bước này, mục đích là quan sát cách AI phản hồi khi yêu cầu còn ngắn và chưa có cấu trúc rõ ràng.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 3: Đánh giá kết quả phản hồi ban đầu</strong>
+        <p>
+          Sau khi nhận kết quả, em đọc lại phần tóm tắt để xem nội dung đã đầy đủ, dễ hiểu và đúng trọng tâm hay chưa.
+          Em nhận thấy prompt cơ bản có thể tạo ra câu trả lời tổng quát nhưng chưa phân chia rõ các ý quan trọng.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 4: Cải tiến prompt theo cấu trúc ba phần</strong>
+        <p>
+          Em điều chỉnh prompt bằng cách yêu cầu AI chia câu trả lời thành ba phần:
+          vấn đề nghiên cứu, cơ chế cốt lõi và ý nghĩa thực tiễn.
+          Việc bổ sung cấu trúc giúp kết quả rõ ràng hơn và dễ sử dụng cho mục đích học tập.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 5: Bổ sung vai trò và đối tượng người nghe</strong>
+        <p>
+          Tiếp theo, em nâng cấp prompt bằng cách yêu cầu AI đóng vai chuyên gia AI Engineering
+          và giải thích cho sinh viên năm nhất. Điều này giúp nội dung phản hồi được trình bày đơn giản hơn,
+          phù hợp với người mới bắt đầu tìm hiểu về trí tuệ nhân tạo.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 6: Yêu cầu giải thích từng bước và có ví dụ minh họa</strong>
+        <p>
+          Em tiếp tục bổ sung yêu cầu giải thích từng bước, đồng thời minh họa bằng ví dụ dịch tiếng Anh sang tiếng Việt.
+          Nhờ ví dụ cụ thể, các khái niệm trừu tượng như attention, encoder, decoder và Transformer trở nên dễ hiểu hơn.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 7: So sánh các phiên bản prompt</strong>
+        <p>
+          Em so sánh kết quả giữa prompt cơ bản, prompt có cấu trúc và prompt nâng cao.
+          Qua đó, em nhận ra prompt càng rõ vai trò, mục tiêu, đối tượng và định dạng đầu ra thì phản hồi của AI càng hữu ích.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 8: Hoàn thiện nội dung báo cáo</strong>
+        <p>
+          Cuối cùng, em tổng hợp quá trình thử nghiệm prompt, ghi lại kết quả nhận được và rút ra bài học.
+          Bài làm được trình bày thành file PDF nhằm minh chứng quá trình sử dụng AI để hỗ trợ học tập.
+        </p>
+      </div>
+    </div>
+
+    <h2>Sản phẩm cuối cùng</h2>
+    <p>
+      Sản phẩm cuối cùng của Bài 3 là file PDF trình bày quá trình sử dụng AI để tóm tắt và phân tích tài liệu học thuật.
+      Bài làm thể hiện sự khác nhau giữa các cấp độ prompt, từ cơ bản đến nâng cao, đồng thời cho thấy cách AI có thể hỗ trợ
+      việc đọc hiểu tài liệu nhưng vẫn cần người học kiểm tra, đánh giá và điều chỉnh nội dung.
+    </p>
+    <a href="https://drive.google.com/file/d/1BUq28A5Hed0QZ1IU52M--hoUNpOlJk1d/view?usp=sharing" class="link-noi">https://drive.google.com/file/d/1BUq28A5Hed0QZ1IU52M--hoUNpOlJk1d/view?usp=sharing</a>
+
+<style>
+.link-noi {
+  color: white;
+  background-color: #7c3aed;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.link-noi:hover {
+  background-color: #4a0e8f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+</style>
+    <iframe class="pdf-frame" src="Bài 3.pdf"></iframe>
+  </div>
+</div>
+
+  </section>
+
+  <!-- CHI TIẾT BÀI 4 -->
+
+  <section id="bai4" class="detail-page">
+    <div class="detail-container">
+      <button class="back-btn" onclick="backToMain()">← Quay lại trang chính</button>
+
+  <div class="detail-card">
+    <h1>Bài 4: Giao tiếp và hợp tác trong môi trường số</h1>
+      <div class="highlight-box">
+    <h2>Mục tiêu</h2>
+    <p>
+      Ở Bài 4, em tập trung rèn luyện kỹ năng sử dụng các công cụ hợp tác trực tuyến để hỗ trợ quá trình làm việc nhóm. Mục tiêu chính của bài là biết cách quản lý nhiệm vụ, soạn thảo tài liệu chung, lưu trữ dữ liệu và trao đổi thông tin trong môi trường trực tuyến.
+
+Thông qua bài tập này, em đã sử dụng các công cụ gồm Trello, Google Docs, Google Drive và Slack nhằm nâng cao hiệu quả phối hợp nhóm, theo dõi tiến độ công việc và thể hiện rõ trách nhiệm cá nhân trong quá trình thực hiện dự án.
+    </p>
+      </div>
+    <h2>Quá trình thực hiện</h2>
+    <div class="step-grid">
+      <div class="step-box">
+        <strong>Bước 1: Quản lý nhiệm vụ bằng Trello</strong>
+        <p>Đầu tiên, em sử dụng Trello để theo dõi các nhiệm vụ cá nhân trong dự án nhóm. Sau khi tham gia bảng làm việc chung, em theo dõi các danh sách công việc như Cần làm, Đang làm, Review và Hoàn thành.
+
+Trên Trello, em tạo và cập nhật thẻ nhiệm vụ, theo dõi hạn hoàn thành, đánh dấu trạng thái công việc và kiểm tra tiến độ của bản thân. Việc sử dụng Trello giúp em tránh bỏ sót nhiệm vụ và có kế hoạch làm việc rõ ràng hơn.</p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 2: Soạn thảo và chỉnh sửa nội dung bằng Google Docs</strong>
+        <p>Sau khi nhận nhiệm vụ, em sử dụng Google Docs để tham gia viết và chỉnh sửa nội dung trong tài liệu chung của nhóm. Công cụ này hỗ trợ làm việc cộng tác theo thời gian thực, giúp các thành viên có thể cùng chỉnh sửa, góp ý và hoàn thiện nội dung.
+
+Trong quá trình làm việc, em sử dụng các tính năng như chỉnh sửa văn bản, bình luận và theo dõi thay đổi. Nhờ đó, việc trao đổi nội dung trở nên thuận tiện hơn, đồng thời phần đóng góp cá nhân cũng được thể hiện rõ ràng qua lịch sử chỉnh sửa.</p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 3: Lưu trữ và chia sẻ tài liệu bằng Google Drive</strong>
+        <p>Bên cạnh việc soạn thảo nội dung, em sử dụng Google Drive để lưu trữ các tệp liên quan đến phần việc của mình. Các tài liệu được sắp xếp theo thư mục, đặt tên rõ ràng và chia sẻ cho các thành viên trong nhóm với quyền truy cập phù hợp.
+
+Việc sử dụng Google Drive giúp tài liệu không bị phân tán, dễ tìm kiếm và thuận tiện khi cần cập nhật hoặc chia sẻ lại. Đây cũng là công cụ quan trọng giúp nhóm quản lý tài nguyên chung một cách khoa học hơn.</p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 4: Trao đổi và phối hợp nhóm bằng Slack</strong>
+        <p>Trong quá trình thực hiện dự án, em sử dụng Slack để trao đổi thông tin với các thành viên trong nhóm. Em dùng Slack để cập nhật tiến độ, hỏi đáp khi gặp khó khăn, nhắc nhở deadline và gửi các đường link hoặc tệp liên quan.
+
+Nhờ có Slack, việc giao tiếp nhóm trở nên tập trung và rõ ràng hơn. Các nội dung trao đổi được lưu lại, giúp em dễ dàng tra cứu khi cần xem lại thông tin hoặc kiểm tra yêu cầu công việc.</p>
+      </div>
+      </div>
+      </div>
+
+    <h2>Sản phẩm cuối cùng</h2>
+    <p>
+      Sản phẩm cuối cùng của Bài 4 là một báo cáo cá nhân trình bày quá trình sử dụng các công cụ hợp tác trực tuyến trong dự án nhóm. Báo cáo thể hiện rõ các nội dung chính sau:
+
+Các công cụ đã sử dụng trong quá trình làm việc nhóm.
+Cách thiết lập và sử dụng từng công cụ.
+Vai trò cá nhân trong quá trình thực hiện nhiệm vụ.
+Hiệu quả của từng công cụ đối với công việc.
+Những khó khăn gặp phải và cách giải quyết.
+Bài học kinh nghiệm sau khi hoàn thành bài tập.
+
+Bài làm cũng có kèm hình ảnh minh chứng quá trình sử dụng các công cụ như giao diện Trello, Google Docs, Google Drive và phần chia sẻ tài liệu cho thành viên khác.
+    </p>
+    <a href="https://drive.google.com/file/d/16BCChYJ_nnd1aGdC073BrYcgQwf8292t/view?usp=sharing" class="link-noi">https://drive.google.com/file/d/16BCChYJ_nnd1aGdC073BrYcgQwf8292t/view?usp=sharing</a>
+
+<style>
+.link-noi {
+  color: white;
+  background-color: #7c3aed;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.link-noi:hover {
+  background-color: #4a0e8f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+</style>
+    <iframe class="pdf-frame" src="https://drive.google.com/file/d/16BCChYJ_nnd1aGdC073BrYcgQwf8292t/preview"></iframe>
+  </div>
+</div>
+
+  </section>
+
+  <!-- CHI TIẾT BÀI 5 -->
+
+  <section id="bai5" class="detail-page">
+    <div class="detail-container">
+      <button class="back-btn" onclick="backToMain()">← Quay lại trang chính</button>
+
+  <div class="detail-card">
+    <h1>Bài 5: Sáng tạo nội dung số</h1>
+
+    <div class="highlight-box">
+      <h2>Mục tiêu</h2>
+      <p>
+        Ở Bài 5, em tập trung rèn luyện kỹ năng sáng tạo nội dung số thông qua việc lên ý tưởng,
+        thiết kế, chỉnh sửa và hoàn thiện một sản phẩm truyền thông hoặc học tập.
+      </p>
+      <p>
+        Mục tiêu của bài là biết cách biến một ý tưởng ban đầu thành sản phẩm số hoàn chỉnh,
+        có bố cục rõ ràng, nội dung phù hợp, hình ảnh hài hòa và truyền tải được thông điệp đến người xem.
+      </p>
+    </div>
+
+    <h2>Quá trình thực hiện</h2>
+    <div class="step-grid">
+      <div class="step-box">
+        <strong>Bước 1: Xác định chủ đề sản phẩm</strong>
+        <p>
+          Đầu tiên, em xác định chủ đề cho sản phẩm nội dung số dựa trên yêu cầu bài học và mục đích truyền tải.
+          Chủ đề cần rõ ràng, phù hợp với người xem và có khả năng trình bày bằng hình ảnh, chữ viết hoặc video.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 2: Xác định đối tượng người xem</strong>
+        <p>
+          Sau khi chọn chủ đề, em xác định sản phẩm sẽ hướng đến ai, ví dụ học sinh, sinh viên hoặc người quan tâm đến kỹ năng số.
+          Việc xác định đối tượng giúp em lựa chọn ngôn ngữ, màu sắc, hình ảnh và cách trình bày phù hợp hơn.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 3: Lên ý tưởng và xây dựng bố cục</strong>
+        <p>
+          Em phác thảo bố cục sản phẩm gồm tiêu đề, nội dung chính, hình ảnh minh họa và phần kết luận.
+          Ở bước này, em chú ý sắp xếp thông tin theo thứ tự dễ hiểu để người xem có thể nắm bắt thông điệp nhanh chóng.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 4: Lựa chọn công cụ thiết kế</strong>
+        <p>
+          Em lựa chọn công cụ phù hợp để tạo sản phẩm, có thể là Canva, PowerPoint, CapCut hoặc một công cụ thiết kế trực tuyến khác.
+          Công cụ được chọn cần dễ sử dụng, hỗ trợ chèn hình ảnh, chỉnh sửa văn bản và xuất sản phẩm ở định dạng phù hợp.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 5: Thiết kế bản nháp đầu tiên</strong>
+        <p>
+          Em bắt đầu thiết kế sản phẩm dựa trên bố cục đã chuẩn bị.
+          Trong quá trình này, em thêm tiêu đề, nội dung, hình ảnh, biểu tượng và các thành phần trang trí cần thiết
+          để sản phẩm có tính trực quan và hấp dẫn hơn.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 6: Chỉnh sửa màu sắc, font chữ và hình ảnh</strong>
+        <p>
+          Sau khi hoàn thành bản nháp, em điều chỉnh màu sắc, font chữ, kích thước chữ và vị trí hình ảnh.
+          Em chú ý giữ sự thống nhất về phong cách thiết kế, tránh sử dụng quá nhiều màu hoặc quá nhiều kiểu chữ gây rối mắt.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 7: Kiểm tra nội dung và hoàn thiện sản phẩm</strong>
+        <p>
+          Em đọc lại toàn bộ nội dung để kiểm tra lỗi chính tả, độ rõ ràng của thông điệp và tính hợp lý của bố cục.
+          Nếu cần, em chỉnh sửa lại các phần chưa phù hợp để sản phẩm trở nên hoàn chỉnh hơn.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 8: Xuất file và lưu trữ sản phẩm</strong>
+        <p>
+          Cuối cùng, em xuất sản phẩm ở định dạng phù hợp như PDF, PNG, JPG hoặc video.
+          Sản phẩm được lưu vào thư mục bài tập và có thể chia sẻ bằng đường link hoặc chèn trực tiếp vào Portfolio.
+        </p>
+      </div>
+    </div>
+
+    <h2>Sản phẩm cuối cùng</h2>
+    <p>
+      Sản phẩm cuối cùng của Bài 5 là một sản phẩm nội dung số hoàn chỉnh, có thể là poster, hình ảnh,
+      bài viết, video ngắn hoặc ấn phẩm truyền thông. Bài làm thể hiện quá trình từ hình thành ý tưởng,
+      thiết kế bản nháp, chỉnh sửa đến hoàn thiện sản phẩm.
+    </p>
+    <p>
+      Thông qua bài tập này, em học được cách trình bày thông tin bằng hình ảnh, lựa chọn bố cục hợp lý,
+      sử dụng công cụ thiết kế và đánh giá chất lượng sản phẩm trước khi chia sẻ.
+    </p>
+      <a href="https://drive.google.com/file/d/1zoAJWl-wSeLx2gbP6fTjLTeXVF7H_bie/view?usp=sharing" class="link-noi">https://drive.google.com/file/d/1zoAJWl-wSeLx2gbP6fTjLTeXVF7H_bie/view?usp=sharing</a>
+
+<style>
+.link-noi {
+  color: white;
+  background-color: #7c3aed;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.link-noi:hover {
+  background-color: #4a0e8f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+</style>
+    <iframe class="pdf-frame" src="https://drive.google.com/file/d/1zoAJWl-wSeLx2gbP6fTjLTeXVF7H_bie/preview"></iframe>
+  </div>
+</div>
+
+  </section>
+
+  <!-- CHI TIẾT BÀI 6 -->
+
+  <section id="bai6" class="detail-page">
+    <div class="detail-container">
+      <button class="back-btn" onclick="backToMain()">← Quay lại trang chính</button>
+
+  <div class="detail-card">
+    <h1>Bài 6: An toàn và liêm chính học thuật trong môi trường số</h1>
+
+    <div class="highlight-box">
+      <h2>Mục tiêu</h2>
+      <p>
+        Ở Bài 6, em tập trung tìm hiểu về an toàn thông tin, bảo vệ dữ liệu cá nhân
+        và liêm chính học thuật khi học tập, làm việc trong môi trường số.
+      </p>
+      <p>
+        Mục tiêu của bài là nhận biết các nguy cơ thường gặp trên môi trường trực tuyến,
+        biết cách sử dụng tài khoản và dữ liệu cá nhân an toàn, đồng thời hiểu trách nhiệm của người học
+        khi sử dụng tài liệu, Internet và công cụ AI.
+      </p>
+    </div>
+
+    <h2>Quá trình thực hiện</h2>
+    <div class="step-grid">
+      <div class="step-box">
+        <strong>Bước 1: Tìm hiểu khái niệm an toàn thông tin</strong>
+        <p>
+          Đầu tiên, em tìm hiểu an toàn thông tin là gì và vì sao việc bảo vệ dữ liệu cá nhân lại quan trọng.
+          Em nhận thấy thông tin như mật khẩu, email, số điện thoại, hình ảnh cá nhân và tài liệu học tập
+          đều cần được bảo vệ khi sử dụng Internet.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 2: Nhận diện các nguy cơ trên môi trường số</strong>
+        <p>
+          Em tìm hiểu các nguy cơ phổ biến như lộ mật khẩu, truy cập đường link lạ, tải tệp không rõ nguồn gốc,
+          chia sẻ quá nhiều thông tin cá nhân và bị lừa đảo trực tuyến.
+          Việc nhận diện nguy cơ giúp em cẩn thận hơn khi học tập và giao tiếp trên mạng.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 3: Tìm hiểu cách bảo vệ tài khoản cá nhân</strong>
+        <p>
+          Em rút ra một số biện pháp bảo vệ tài khoản như đặt mật khẩu mạnh, không dùng chung một mật khẩu cho nhiều dịch vụ,
+          bật xác thực hai bước và đăng xuất tài khoản khi sử dụng máy tính công cộng.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 4: Phân tích việc bảo vệ dữ liệu cá nhân</strong>
+        <p>
+          Em phân tích các tình huống có thể làm lộ dữ liệu cá nhân, ví dụ chia sẻ ảnh chụp màn hình có thông tin riêng tư
+          hoặc gửi tài liệu cho sai người. Từ đó, em học cách kiểm tra kỹ nội dung trước khi đăng tải hoặc chia sẻ.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 5: Tìm hiểu khái niệm liêm chính học thuật</strong>
+        <p>
+          Em tìm hiểu liêm chính học thuật là việc học tập trung thực, không đạo văn, không gian lận
+          và biết ghi nhận nguồn tài liệu khi sử dụng ý tưởng của người khác.
+          Đây là nguyên tắc quan trọng để xây dựng thái độ học tập nghiêm túc.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 6: Phân tích việc sử dụng AI có trách nhiệm</strong>
+        <p>
+          Em tìm hiểu cách sử dụng AI như một công cụ hỗ trợ thay vì thay thế hoàn toàn quá trình học tập.
+          Khi dùng AI, người học cần kiểm tra lại thông tin, chỉnh sửa bằng hiểu biết của bản thân
+          và không sao chép nguyên văn nếu chưa đánh giá nội dung.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 7: Xây dựng bộ nguyên tắc cá nhân</strong>
+        <p>
+          Từ các nội dung đã tìm hiểu, em xây dựng bộ nguyên tắc sử dụng tài nguyên số và AI có trách nhiệm.
+          Bộ nguyên tắc bao gồm bảo vệ tài khoản, tôn trọng bản quyền, trích dẫn nguồn, kiểm tra thông tin
+          và trung thực trong học tập.
+        </p>
+      </div>
+
+      <div class="step-box">
+        <strong>Bước 8: Hoàn thiện báo cáo và rút ra bài học</strong>
+        <p>
+          Cuối cùng, em tổng hợp nội dung thành bài báo cáo, trình bày các nguy cơ, biện pháp bảo vệ,
+          nguyên tắc liêm chính học thuật và bài học kinh nghiệm.
+          Qua bài tập này, em hiểu rằng kỹ năng số không chỉ là biết sử dụng công cụ mà còn là sử dụng công cụ đúng cách.
+        </p>
+      </div>
+    </div>
+
+    <h2>Sản phẩm cuối cùng</h2>
+    <p>
+      Sản phẩm cuối cùng của Bài 6 là bài báo cáo hoặc bộ nguyên tắc về an toàn và liêm chính học thuật
+      trong môi trường số. Nội dung sản phẩm thể hiện các biện pháp bảo vệ dữ liệu cá nhân,
+      cách sử dụng tài nguyên số đúng quy định và cách dùng AI một cách trung thực, có trách nhiệm.
+    </p>
+    <p>
+      Bài tập giúp em nâng cao ý thức tự bảo vệ bản thân trên Internet, đồng thời hình thành thói quen học tập trung thực
+      khi sử dụng công nghệ và các nguồn thông tin trực tuyến.
+    </p>
+      <a href="https://drive.google.com/file/d/1uAcAyMQDzK4lXisCsj-MyAj24W5DaVEB/view?usp=sharing" class="link-noi">https://drive.google.com/file/d/1uAcAyMQDzK4lXisCsj-MyAj24W5DaVEB/view?usp=sharing</a>
+
+<style>
+.link-noi {
+  color: white;
+  background-color: #7c3aed;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.link-noi:hover {
+  background-color: #4a0e8f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+</style>
+    <iframe class="pdf-frame" src="https://drive.google.com/file/d/1uAcAyMQDzK4lXisCsj-MyAj24W5DaVEB/preview"></iframe>
+  </div>
+</div>
+
+  </section>
+
+  <script>
+    function showDetail(id) {
+      document.getElementById("mainContent").classList.add("hidden");
+
+      const detailPages = document.querySelectorAll(".detail-page");
+      detailPages.forEach(function(page) {
+        page.classList.remove("active");
+      });
+
+      document.getElementById(id).classList.add("active");
+      window.scrollTo(0, 0);
+    }
+
+    function backToMain() {
+      const detailPages = document.querySelectorAll(".detail-page");
+      detailPages.forEach(function(page) {
+        page.classList.remove("active");
+      });
+
+      document.getElementById("mainContent").classList.remove("hidden");
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+</body>
+</html>
